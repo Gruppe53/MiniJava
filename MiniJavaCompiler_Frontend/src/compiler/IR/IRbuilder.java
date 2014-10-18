@@ -130,7 +130,9 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements MiniJavaV
 //	  : variable  ';'
 //	  ;
 
-	public MJVariable visitVarDeclaration(MiniJavaParser.VarDeclarationContext ctx) { return (MJVariable)visitChildren(ctx); }
+	public MJVariable visitVarDeclaration(MiniJavaParser.VarDeclarationContext ctx) {
+		return (MJVariable)visitChildren(ctx);
+	}
 
 //	variable : type variableName=IDENT
 //			  ;
@@ -226,7 +228,7 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements MiniJavaV
 //	voidtype: 'void' ;
 	  
 	public MJType visitProcType(MiniJavaParser.ProcTypeContext ctx) { 
-		List<org.antlr.v4.runtime.tree.ParseTree>x = ctx.children;
+		List<org.antlr.v4.runtime.tree.ParseTree> x = ctx.children;
 		
 		return (MJType)visitChildren(ctx); 
 	}
@@ -236,13 +238,13 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements MiniJavaV
 	}
 
 	@Override
-	public IR visitBasictype(BasictypeContext ctx) {
+	public MJType visitBasictype(BasictypeContext ctx) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public IR visitArraytype(ArraytypeContext ctx) {
+	public MJType visitArraytype(ArraytypeContext ctx) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -485,8 +487,7 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements MiniJavaV
 	}
 
 	public MJExpression visitExpressionNewIntArray(ExpressionNewIntArrayContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		return new MJNewArray(ctx.argument.getText());
 	}
 
 	public MJExpression visitExpressionMethodCall(ExpressionMethodCallContext ctx) {
