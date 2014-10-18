@@ -22,9 +22,7 @@ public class MJIf extends MJStatement {
 	public void prettyPrint(PrettyPrinter prepri) {
 		prepri.print("if (");
 		this.argument.prettyPrint(prepri);
-		prepri.print(") {");
+		prepri.print(")");
 		this.ifStmt.prettyPrint(prepri);
-		prepri.print("};");
-		
 	}
 }

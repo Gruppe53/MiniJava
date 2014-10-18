@@ -23,7 +23,6 @@ public class MJArray extends MJIdentifier {
 		this.array.prettyPrint(prepri);
 		prepri.print("[");
 		this.index.prettyPrint(prepri);
-		prepri.println(";");
-		// Won't print newline... "prepri.println(";");" at line 26, yet no success.
+		prepri.print("]");
 	}
 }

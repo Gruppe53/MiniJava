@@ -12,10 +12,9 @@ public class MJWhile extends MJStatement {
 	}
 
 	public void prettyPrint(PrettyPrinter prepri) {
-		prepri.print("While (");
+		prepri.print("while (");
 		this.argument.prettyPrint(prepri);
-		prepri.print(") {");
+		prepri.print(") ");
 		this.whileStmt.prettyPrint(prepri);
-		prepri.print("};");
 	}
 }

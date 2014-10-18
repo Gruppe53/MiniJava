@@ -13,10 +13,9 @@ public class MJIfElse extends MJIf {
 	public void prettyPrint(PrettyPrinter prepri) {
 		prepri.print("if (");
 		this.argument.prettyPrint(prepri);
-		prepri.print(") {");
+		prepri.println(") ");
 		this.ifStmt.prettyPrint(prepri);
-		prepri.print("} else {");
+		prepri.println("else");
 		this.elseStmt.prettyPrint(prepri);
-		prepri.print("};");
 	}
 }

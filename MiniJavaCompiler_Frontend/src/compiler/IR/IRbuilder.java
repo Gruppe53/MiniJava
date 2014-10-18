@@ -239,6 +239,12 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements MiniJavaV
 	}
 
 	public MJStatement visitStatementArrayAsg(StatementArrayAsgContext ctx) {
+		// Will not be printed as a correct type.
+		// int[] x;
+		// - will be printed as:
+		// null x;
+		// Definately some issues with mjarrayasg and mjtype.
+		
 		MJIdentifier name = (MJIdentifier) visitId(ctx.name);
 		MJExpression lhs = (MJExpression) visitExpression(ctx.lhs);
 		MJExpression rhs = (MJExpression) visitExpression(ctx.rhs);
@@ -250,15 +256,24 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements MiniJavaV
 	public MJStatement visitStatementIfThenElse(StatementIfThenElseContext ctx) {
 		MJExpression argument = (MJExpression) visitExpression(ctx.argument);
 		MJStatement ifStmt = (MJStatement) visitStatement(ctx.ifStatement);
-		MJStatement elseStmt = (MJStatement) visitStatement(ctx.elseStatement);
-
-		if(elseStmt.equals(null))
+		
+		// Seems to fix the current issue with if-else-statements.
+		// When "if" is stated and "else" is not, it will create nullpointer.
+		// Otherwise it will continue with no issues (if both "if" and "else" is used).
+		try {
+			MJStatement elseStmt = (MJStatement) visitStatement(ctx.elseStatement);
+			return new MJIfElse(argument, ifStmt, elseStmt);
+		} catch(Exception e) {
 			return new MJIf(argument, ifStmt);
-
-		return new MJIfElse(argument, ifStmt, elseStmt);
+		}
 	}
 
 	public MJStatement visitStatementWhile(StatementWhileContext ctx) {
+		// Won't accept e.g. "i < 2" as argument.
+		// while(i < 2)....
+		// - will print
+		// while(i)...
+		// Strangely enough, "if-else" will accept the same argument, and print correctly.
 		MJExpression argument = (MJExpression) visitExpression(ctx.argument);
 		MJStatement whileStmt = (MJStatement) visitStatement(ctx.whileStatement);
 

@@ -31,6 +31,6 @@ public class MJArrayAssign extends MJStatement {
 		this.index.prettyPrint(prepri);
 		prepri.print("] = ");
 		this.exp.prettyPrint(prepri);
-		prepri.print(";");
+		prepri.println(";");
 	}
 }
