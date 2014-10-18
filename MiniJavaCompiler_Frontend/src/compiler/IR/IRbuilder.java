@@ -114,7 +114,9 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements MiniJavaV
 	}
 
 	//	type
-	public MJType visitType(MiniJavaParser.TypeContext ctx) { return (MJType)visitChildren(ctx); }
+	public MJType visitType(MiniJavaParser.TypeContext ctx) {
+		return (MJType)visitChildren(ctx);
+	}
 
 	public MJType visitTypeBoolean(MiniJavaParser.TypeBooleanContext ctx) {
 		return MJType.getBooleanType();
@@ -176,14 +178,12 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements MiniJavaV
 		return MJType.getVoidType();
 	}
 
-	public MJType visitBasictype(BasictypeContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
+	public MJType visitBasictype(MiniJavaParser.BasictypeContext ctx) {
+		return (MJType) visitChildren(ctx);
 	}
 
-	public MJType visitArraytype(ArraytypeContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
+	public MJType visitArraytype(MiniJavaParser.ArraytypeContext ctx) {
+		return (MJType) visitChildren(ctx);
 	}
 
 	//	statement
