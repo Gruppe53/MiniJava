@@ -6,6 +6,7 @@ import compiler.PrettyPrinter;
 
 public class MJMethodCallExpr extends MJExpression {
 	
+	
 	public MJMethodCallExpr() {
 	}
 
