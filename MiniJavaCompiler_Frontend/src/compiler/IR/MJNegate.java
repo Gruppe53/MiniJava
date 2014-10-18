@@ -11,6 +11,5 @@ public class MJNegate extends MJUnaryOp {
 	public void prettyPrint(PrettyPrinter prepri) {
 		prepri.print("!");
 		this.arg.prettyPrint(prepri);
-		// TODO Check validity of line 12
 	}
 }

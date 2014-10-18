@@ -1,7 +1,6 @@
 package compiler.IR;
 
 public abstract class MJBinaryOp extends MJExpression {
-
 	protected MJExpression lhs;
 	protected MJExpression rhs;
 

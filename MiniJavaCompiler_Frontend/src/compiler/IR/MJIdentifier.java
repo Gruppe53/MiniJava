@@ -3,7 +3,6 @@ package compiler.IR;
 import compiler.PrettyPrinter;
 
 public class MJIdentifier extends MJExpression {
-
 	private String name;
 
 	protected MJIdentifier() {

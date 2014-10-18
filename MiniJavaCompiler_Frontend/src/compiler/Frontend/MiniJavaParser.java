@@ -1552,9 +1552,8 @@ public class MiniJavaParser extends Parser {
 	public static class StatementMethodCallContext extends ParserRuleContext {
 		public IdContext name;
 		public Token methodName;
-		public ExpressionContext headArgument;
 		public ExpressionContext expression;
-		public List<ExpressionContext> tailArguments = new ArrayList<ExpressionContext>();
+		public List<ExpressionContext> arguments = new ArrayList<ExpressionContext>();
 		public IdContext id() {
 			return getRuleContext(IdContext.class,0);
 		}
@@ -1606,7 +1605,8 @@ public class MiniJavaParser extends Parser {
 			_la = _input.LA(1);
 			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << 2) | (1L << 3) | (1L << 16) | (1L << 19) | (1L << 21) | (1L << 31) | (1L << 36) | (1L << IDENT) | (1L << INT) | (1L << STRING))) != 0)) {
 				{
-				setState(288); ((StatementMethodCallContext)_localctx).headArgument = expression();
+				setState(288); ((StatementMethodCallContext)_localctx).expression = expression();
+				((StatementMethodCallContext)_localctx).arguments.add(((StatementMethodCallContext)_localctx).expression);
 				setState(293);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
@@ -1615,7 +1615,7 @@ public class MiniJavaParser extends Parser {
 					{
 					setState(289); match(20);
 					setState(290); ((StatementMethodCallContext)_localctx).expression = expression();
-					((StatementMethodCallContext)_localctx).tailArguments.add(((StatementMethodCallContext)_localctx).expression);
+					((StatementMethodCallContext)_localctx).arguments.add(((StatementMethodCallContext)_localctx).expression);
 					}
 					}
 					setState(295);
@@ -2619,9 +2619,8 @@ public class MiniJavaParser extends Parser {
 	public static class ExpressionMethodCallContext extends ParserRuleContext {
 		public IdContext name;
 		public Token methodName;
-		public ExpressionContext headArgument;
 		public ExpressionContext expression;
-		public List<ExpressionContext> tailArguments = new ArrayList<ExpressionContext>();
+		public List<ExpressionContext> arguments = new ArrayList<ExpressionContext>();
 		public IdContext id() {
 			return getRuleContext(IdContext.class,0);
 		}
@@ -2673,7 +2672,8 @@ public class MiniJavaParser extends Parser {
 			_la = _input.LA(1);
 			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << 2) | (1L << 3) | (1L << 16) | (1L << 19) | (1L << 21) | (1L << 31) | (1L << 36) | (1L << IDENT) | (1L << INT) | (1L << STRING))) != 0)) {
 				{
-				setState(398); ((ExpressionMethodCallContext)_localctx).headArgument = expression();
+				setState(398); ((ExpressionMethodCallContext)_localctx).expression = expression();
+				((ExpressionMethodCallContext)_localctx).arguments.add(((ExpressionMethodCallContext)_localctx).expression);
 				setState(403);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
@@ -2682,7 +2682,7 @@ public class MiniJavaParser extends Parser {
 					{
 					setState(399); match(20);
 					setState(400); ((ExpressionMethodCallContext)_localctx).expression = expression();
-					((ExpressionMethodCallContext)_localctx).tailArguments.add(((ExpressionMethodCallContext)_localctx).expression);
+					((ExpressionMethodCallContext)_localctx).arguments.add(((ExpressionMethodCallContext)_localctx).expression);
 					}
 					}
 					setState(405);

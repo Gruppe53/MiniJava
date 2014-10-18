@@ -4,7 +4,6 @@ package compiler.IR;
 import compiler.PrettyPrinter;
 
 public class MJBoolean extends MJExpression {
-
 	private enum MJBooleanValues {
 		True, False
 	};

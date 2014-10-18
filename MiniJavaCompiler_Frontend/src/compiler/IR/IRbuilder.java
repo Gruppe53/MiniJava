@@ -308,7 +308,7 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements MiniJavaV
 		String methodName = ctx.methodName.getText();
 		LinkedList<MJExpression> arguments = new LinkedList<MJExpression>();
 		
-		for(MiniJavaParser.ExpressionContext c : ctx.tailArguments) {
+		for(MiniJavaParser.ExpressionContext c : ctx.arguments) {
 			arguments.add(visitExpression(c));
 		}
 		
@@ -437,25 +437,40 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements MiniJavaV
 //	expressionIdentifierArray : name=id '[' argument=expression ']';
 //	expressionMethodCall      : (name=id '.')? methodName=IDENT '(' (headArgument+=expression(',' tailArgument+=expression)*)? ')';
 
-	public MJExpression visitLevel5(MiniJavaParser.Level5Context ctx) { return (MJExpression)visitChildren(ctx); }
+	public MJExpression visitLevel5(MiniJavaParser.Level5Context ctx) {
+		return (MJExpression)visitChildren(ctx);
+	}
 
-	public MJExpression visitExpressionUnaryMinus(MiniJavaParser.ExpressionUnaryMinusContext ctx) { return new MJUnaryMinus(visitLevel5(ctx.argument));	}
+	public MJExpression visitExpressionUnaryMinus(MiniJavaParser.ExpressionUnaryMinusContext ctx) {
+		return new MJUnaryMinus(visitLevel5(ctx.argument));
+	}
 
-	public MJExpression visitExpressionParentheses(MiniJavaParser.ExpressionParenthesesContext ctx) { return new MJUnaryMinus(visitExpression(ctx.argument)); }
+	public MJExpression visitExpressionParentheses(MiniJavaParser.ExpressionParenthesesContext ctx) {
+		return new MJUnaryMinus(visitExpression(ctx.argument));
+	}
 
-	public MJExpression visitExpressionConstantTrue(MiniJavaParser.ExpressionConstantTrueContext ctx) { return MJBoolean.True; }
+	public MJExpression visitExpressionConstantTrue(MiniJavaParser.ExpressionConstantTrueContext ctx) {
+		return MJBoolean.True;
+	}
 
-	public MJExpression visitExpressionConstantFalse(MiniJavaParser.ExpressionConstantFalseContext ctx) { return MJBoolean.False; }
+	public MJExpression visitExpressionConstantFalse(MiniJavaParser.ExpressionConstantFalseContext ctx) {
+		return MJBoolean.False;
+	}
 	
-	public MJExpression visitExpressionConstantInteger(MiniJavaParser.ExpressionConstantIntegerContext ctx) { return new MJInteger(ctx.value.getText()); }
+	public MJExpression visitExpressionConstantInteger(MiniJavaParser.ExpressionConstantIntegerContext ctx) {
+		return new MJInteger(ctx.value.getText());
+	}
 	
-	public MJExpression visitExpressionConstantString(MiniJavaParser.ExpressionConstantStringContext ctx) { return new MJString(ctx.value.getText()); }
+	public MJExpression visitExpressionConstantString(MiniJavaParser.ExpressionConstantStringContext ctx) {
+		return new MJString(ctx.value.getText());
+	}
 
-	public MJExpression visitExpressionIdentifier(ExpressionIdentifierContext ctx) { return new MJIdentifier(ctx.name.getText()); }
+	public MJExpression visitExpressionIdentifier(ExpressionIdentifierContext ctx) {
+		return new MJIdentifier(ctx.name.getText());
+	}
 
 	public MJExpression visitExpressionNewObject(ExpressionNewObjectContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		return new MJNew(ctx.name.getText());
 	}
 
 	public MJExpression visitExpressionNegate(ExpressionNegateContext ctx) {

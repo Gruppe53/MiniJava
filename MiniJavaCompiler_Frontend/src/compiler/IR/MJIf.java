@@ -11,6 +11,14 @@ public class MJIf extends MJStatement {
 		this.ifStmt = ifStmt;
 	}
 	
+	public MJExpression getArgument() {
+		return argument;
+	}
+
+	public MJStatement getIfStmt() {
+		return ifStmt;
+	}
+
 	public void prettyPrint(PrettyPrinter prepri) {
 		// TODO
 	}

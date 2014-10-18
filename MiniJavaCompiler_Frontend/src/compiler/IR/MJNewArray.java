@@ -3,7 +3,6 @@ package compiler.IR;
 import compiler.PrettyPrinter;
 
 public class MJNewArray extends MJNew {
-
 	private MJType type;
 	
 	public MJNewArray(MJType type){

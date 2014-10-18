@@ -3,7 +3,6 @@ package compiler.IR;
 import compiler.PrettyPrinter;
 
 public class MJInteger extends MJExpression {
-
 	private int value;
 
 	public MJInteger(String string) {

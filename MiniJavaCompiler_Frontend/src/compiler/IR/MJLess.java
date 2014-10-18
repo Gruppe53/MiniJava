@@ -3,7 +3,6 @@ package compiler.IR;
 import compiler.PrettyPrinter;
 
 public class MJLess extends MJBinaryOp {
-
 	private MJExpression rhs;
 	private MJExpression lhs;
 	

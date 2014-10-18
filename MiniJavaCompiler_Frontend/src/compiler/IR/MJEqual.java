@@ -3,7 +3,6 @@ package compiler.IR;
 import compiler.PrettyPrinter;
 
 public class MJEqual extends MJBinaryOp {
-
 	public MJEqual() {}
 	
 	public MJEqual(MJExpression a, MJExpression b) {
