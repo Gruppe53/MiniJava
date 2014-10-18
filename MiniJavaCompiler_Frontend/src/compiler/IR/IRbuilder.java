@@ -190,9 +190,9 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements MiniJavaV
 	
 	//	procType
 	public MJType visitProcType(MiniJavaParser.ProcTypeContext ctx) { 
-		//List<org.antlr.v4.runtime.tree.ParseTree> x = ctx.children;
+		List<org.antlr.v4.runtime.tree.ParseTree> x = ctx.children;
 		
-		return (MJType)visitChildren(ctx); 
+		return (MJType) visitChildren(ctx); 
 	}
 	
 	public MJType visitTypeVoid(MiniJavaParser.TypeVoidContext ctx) {
@@ -426,8 +426,7 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements MiniJavaV
 		return null;
 	}
 
-	public MJExpression visitExpressionIdentifierArray(
-			ExpressionIdentifierArrayContext ctx) {
+	public MJExpression visitExpressionIdentifierArray(ExpressionIdentifierArrayContext ctx) {
 		// TODO Auto-generated method stub
 		return null;
 	}

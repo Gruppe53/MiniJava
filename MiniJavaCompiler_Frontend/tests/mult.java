@@ -1,5 +1,4 @@
 class testmain {
-	
 	public static void main(String[] args) {
 		A a;
         int x;
