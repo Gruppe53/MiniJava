@@ -101,7 +101,7 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements MiniJavaV
 
 	//	varDeclaration
 	public MJVariable visitVarDeclaration(MiniJavaParser.VarDeclarationContext ctx) {
-		return (MJVariable)visitChildren(ctx);
+		return (MJVariable) visitVariable(ctx.variable());
 	}
 
 	//	variable : type variableName=IDENT
@@ -132,6 +132,25 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements MiniJavaV
 
 	public MJType visitVoidType(MiniJavaParser.TypeVoidContext ctx) {
 		return MJType.getVoidType();
+	}
+	
+	//	procType
+	public MJType visitProcType(MiniJavaParser.ProcTypeContext ctx) { 
+		//List<org.antlr.v4.runtime.tree.ParseTree> x = ctx.children;
+
+		return (MJType) visitChildren(ctx); 
+	}
+
+	public MJType visitTypeVoid(MiniJavaParser.TypeVoidContext ctx) {
+		return MJType.getVoidType();
+	}
+
+	public MJType visitBasictype(MiniJavaParser.BasictypeContext ctx) {
+		return (MJType) visitChildren(ctx);
+	}
+
+	public MJType visitArraytype(MiniJavaParser.ArraytypeContext ctx) {
+		return (MJType) visitChildren(ctx);
 	}
 
 	//	methodDeclaration
@@ -165,25 +184,6 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements MiniJavaV
 		MJMethod method = new MJMethod(returnType, methodName, parameterList, body, isPublic, isStatic);
 
 		return method;
-	}
-
-	//	procType
-	public MJType visitProcType(MiniJavaParser.ProcTypeContext ctx) { 
-		//List<org.antlr.v4.runtime.tree.ParseTree> x = ctx.children;
-
-		return (MJType) visitChildren(ctx); 
-	}
-
-	public MJType visitTypeVoid(MiniJavaParser.TypeVoidContext ctx) {
-		return MJType.getVoidType();
-	}
-
-	public MJType visitBasictype(MiniJavaParser.BasictypeContext ctx) {
-		return (MJType) visitChildren(ctx);
-	}
-
-	public MJType visitArraytype(MiniJavaParser.ArraytypeContext ctx) {
-		return (MJType) visitChildren(ctx);
 	}
 
 	//	statement

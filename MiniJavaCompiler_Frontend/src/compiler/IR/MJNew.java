@@ -22,6 +22,6 @@ public class MJNew extends MJExpression {
 	public void prettyPrint(PrettyPrinter prepri) {
 		prepri.print("new ");
 		this.type.prettyPrint(prepri);
-		prepri.print("();");
+		prepri.print("()");
 	}
 }
