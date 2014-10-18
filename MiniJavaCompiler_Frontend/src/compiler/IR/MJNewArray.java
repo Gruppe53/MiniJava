@@ -17,7 +17,6 @@ public class MJNewArray extends MJNew {
 			prepri.print("[");
 			this.argument.prettyPrint(prepri);
 			prepri.print("]");
-			prepri.print(";");
 		}
 	}
 	

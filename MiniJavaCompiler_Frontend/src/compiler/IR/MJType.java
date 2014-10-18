@@ -39,7 +39,7 @@ public final class MJType extends IR {
 
 	private MJType(MJType t) {
 		this(TypeEnum.ARRAY);
-		this.name = t.getName() + "[]";
+		this.name = t.getName();
 		this.baseType = t;
 	}
 
