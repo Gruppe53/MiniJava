@@ -487,7 +487,7 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements MiniJavaV
 	}
 
 	public MJExpression visitExpressionNewIntArray(ExpressionNewIntArrayContext ctx) {
-		return new MJNewArray(ctx.argument.getText());
+		return new MJNewArray((MJExpression) visitExpression(ctx.argument));
 	}
 
 	public MJExpression visitExpressionMethodCall(ExpressionMethodCallContext ctx) {

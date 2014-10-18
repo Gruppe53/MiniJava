@@ -3,10 +3,10 @@ package compiler.IR;
 import compiler.PrettyPrinter;
 
 public class MJNewArray extends MJNew {
-	private String argument;
+	private MJExpression argument;
 	
-	public MJNewArray(String argument){
-		this.type = MJType.getArrayType("int");
+	public MJNewArray(MJExpression argument) {
+		super("int", true);
 		this.argument = argument;
 	}
 	
@@ -14,7 +14,9 @@ public class MJNewArray extends MJNew {
 		if (type.isArray()) {
 			prepri.print("new ");
 			this.type.prettyPrint(prepri);
-			prepri.print("[" + argument + "]");
+			prepri.print("[");
+			this.argument.prettyPrint(prepri);
+			prepri.print("]");
 			prepri.print(";");
 		}
 	}
