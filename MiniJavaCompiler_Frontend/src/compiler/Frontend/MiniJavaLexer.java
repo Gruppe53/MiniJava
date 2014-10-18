@@ -1,4 +1,4 @@
-// Generated from C:\Users\Kristin\Downloads\MiniJava.g4 by ANTLR 4.1
+// Generated from D:\Dropbox\DTU\Programmering\3. Semester\02332 Compilerteknik\Projekt\MiniJava.g4 by ANTLR 4.1
 package compiler.Frontend;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;

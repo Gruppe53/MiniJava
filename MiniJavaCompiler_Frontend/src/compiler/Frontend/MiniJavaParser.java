@@ -1,4 +1,4 @@
-// Generated from C:\Users\Kristin\Downloads\MiniJava.g4 by ANTLR 4.1
+// Generated from D:\Dropbox\DTU\Programmering\3. Semester\02332 Compilerteknik\Projekt\MiniJava.g4 by ANTLR 4.1
 package compiler.Frontend;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -1283,7 +1283,6 @@ public class MiniJavaParser extends Parser {
 	}
 
 	public static class StatementBlockContext extends ParserRuleContext {
-		public BlockContext blockStatement;
 		public BlockContext block() {
 			return getRuleContext(BlockContext.class,0);
 		}
@@ -1312,7 +1311,7 @@ public class MiniJavaParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(250); ((StatementBlockContext)_localctx).blockStatement = block();
+			setState(250); block();
 			}
 		}
 		catch (RecognitionException re) {

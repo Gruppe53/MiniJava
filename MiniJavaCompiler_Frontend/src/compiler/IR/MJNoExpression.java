@@ -8,6 +8,6 @@ public final class MJNoExpression extends MJExpression {
 	}
 	
 	public void prettyPrint(PrettyPrinter prepri) {
-		prepri.print(""); // TODO Ask Christian for info
+		prepri.print("");
 	}
 }

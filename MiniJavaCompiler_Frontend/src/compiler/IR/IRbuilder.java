@@ -105,14 +105,8 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements MiniJavaV
 		return new MJClass(className, method);
 	}
 
-//	block
-//	  : '{' ( varDeclaration )* 
-//	        ( statement )*
-//	    '}'
-//	  ;
-	    
+	//	block 
 	public MJBlock visitBlock(MiniJavaParser.BlockContext ctx) {
-		
 		LinkedList<MJVariable> variableDeclarations = new LinkedList<MJVariable>();
 		for (MiniJavaParser.VarDeclarationContext c : ctx.varDeclaration()) {
 			variableDeclarations.add(visitVarDeclaration(c));
@@ -126,17 +120,12 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements MiniJavaV
 		return new MJBlock(variableDeclarations, statements);
 	}
 	
-//	varDeclaration
-//	  : variable  ';'
-//	  ;
-
+	//	varDeclaration
 	public MJVariable visitVarDeclaration(MiniJavaParser.VarDeclarationContext ctx) {
 		return (MJVariable)visitChildren(ctx);
 	}
 
-//	variable : type variableName=IDENT
-//			  ;
-
+	//	variable : type variableName=IDENT
 	public MJVariable visitVariable(MiniJavaParser.VariableContext ctx){
 		
 		MJType variableType = visitType(ctx.type());
@@ -145,16 +134,7 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements MiniJavaV
 		return new MJVariable(variableType, variableName);
 	}
 
-//	type
-//	  : typeBoolean
-//	  | typeInt
-//	  | typeClass
-//	  ;
-//
-//	typeBoolean : 'boolean' ;
-//	typeInt     : 'int' ;
-//	typeClass   : className=IDENT;
-
+	//	type
 	public MJType visitType(MiniJavaParser.TypeContext ctx) { return (MJType)visitChildren(ctx); }
 	
 	public MJType visitTypeBoolean(MiniJavaParser.TypeBooleanContext ctx) {
@@ -174,19 +154,7 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements MiniJavaV
 	}
 
 
-//	methodDeclaration
-//	  : ( isPublic='public'  )?
-//	    ( isStatic='static'  )? 
-//	    procType methodName=IDENT 
-//	    '(' 
-//	      ( variable ( ',' variable )* )? 
-//	    ')' 
-//	    '{' ( varDeclaration )* 
-//	        ( statement )*
-//	        statementReturn
-//	    '}'
-//	  ;
-	  
+	//	methodDeclaration
 	public MJMethod visitMethodDeclaration(MiniJavaParser.MethodDeclarationContext ctx) {
 		
 		boolean isPublic = (ctx.isPublic != null);
@@ -220,15 +188,9 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements MiniJavaV
 		return method;
 	}
 	
-//	procType
-//	  : type  
-//	  | voidtype 
-//	  ;
-//
-//	voidtype: 'void' ;
-	  
+	//	procType
 	public MJType visitProcType(MiniJavaParser.ProcTypeContext ctx) { 
-		List<org.antlr.v4.runtime.tree.ParseTree> x = ctx.children;
+		//List<org.antlr.v4.runtime.tree.ParseTree> x = ctx.children;
 		
 		return (MJType)visitChildren(ctx); 
 	}
@@ -249,21 +211,7 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements MiniJavaV
 		return null;
 	}
 
-//	statement
-//	  : statementAssign
-//	  | statementPrintln
-//	  ;
-//	  
-//	statementAssign        : lhs=id '=' rhs=expression ';' ;
-//	statementPrintln       : 'System.out.println' '(' argument=expression ')' ';' ;
-//	statementReturn        : 'return' ('(' argument=expression ')' )? ';' ;
-//	statementBlock         : blockStatement=block;
-//	statementIfThenElse    : 'if' '(' argument=expression ')' ifStatement=statement ('else' elseStatement=statement)?;
-//	statementWhile         : 'while' '(' argument=expression ')' whileStatement=statement;
-//	statementArrayAsg      : name=id '[' lhs=expression ']' '=' rhs=expression ';';
-//	statementMethodCallPnt : 'System.out.print' '(' argument=expression ')' ';' ;
-//	statementMethodCall    : (name=id '.')? methodName=IDENT '(' (headArguments+=expression(',' tailArguments+=expression)*)? ')' ';' ;
-	
+	//	statement
 	public MJStatement visitStatement(MiniJavaParser.StatementContext ctx) { return (MJStatement)visitChildren(ctx); }	
 	
 	public MJStatement visitStatementAssign(MiniJavaParser.StatementAssignContext ctx) {
@@ -293,9 +241,7 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements MiniJavaV
 	}
 	@Override
 	public MJStatement visitStatementBlock(StatementBlockContext ctx) {
-		
-		
-		return null;
+		return visitBlock(ctx.block());
 	}
 
 	@Override

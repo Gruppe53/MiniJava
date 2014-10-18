@@ -12,6 +12,6 @@ class testmain {
 
 class A {
 	int test() {
-		return 7;
+		return (7);
 	}
 }
