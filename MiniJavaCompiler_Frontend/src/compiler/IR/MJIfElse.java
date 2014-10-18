@@ -11,6 +11,12 @@ public class MJIfElse extends MJIf {
 	}
 
 	public void prettyPrint(PrettyPrinter prepri) {
-		// TODO
+		prepri.print("if (");
+		this.argument.prettyPrint(prepri);
+		prepri.print(") {");
+		this.ifStmt.prettyPrint(prepri);
+		prepri.print("} else {");
+		this.elseStmt.prettyPrint(prepri);
+		prepri.print("};");
 	}
 }
