@@ -491,8 +491,15 @@ public class IRbuilder extends AbstractParseTreeVisitor<IR> implements MiniJavaV
 	}
 
 	public MJExpression visitExpressionMethodCall(ExpressionMethodCallContext ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		String name = ctx.name.getText();
+		String methodName = ctx.methodName.getText();
+		LinkedList<MJExpression> arguments = new LinkedList<MJExpression>();
+		
+		for(MiniJavaParser.ExpressionContext c : ctx.arguments) {
+			arguments.add(visitExpression(c));
+		}
+		
+		return new MJMethodCallExpr(name, methodName, arguments);
 	}
 	
 //	identifier

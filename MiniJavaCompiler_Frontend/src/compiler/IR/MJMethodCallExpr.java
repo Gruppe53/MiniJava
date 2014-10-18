@@ -7,7 +7,7 @@ import compiler.PrettyPrinter;
 public class MJMethodCallExpr extends MJExpression {
 	
 	
-	public MJMethodCallExpr() {
+	public MJMethodCallExpr(String name, String methodName, LinkedList<MJExpression> arguments) {
 	}
 
 	public void prettyPrint(PrettyPrinter prepri) {
