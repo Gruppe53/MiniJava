@@ -6,8 +6,6 @@ import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
 import compiler.Frontend.*;
-import compiler.Frontend.MiniJavaParser.ArraytypeContext;
-import compiler.Frontend.MiniJavaParser.BasictypeContext;
 import compiler.Frontend.MiniJavaParser.ExpressionIdentifierArrayContext;
 import compiler.Frontend.MiniJavaParser.ExpressionIdentifierContext;
 import compiler.Frontend.MiniJavaParser.ExpressionMethodCallContext;
